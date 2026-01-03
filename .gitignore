@@ -1,0 +1,9 @@
+# Environment files with secrets
+.env
+
+# Docker volumes (if mounted locally)
+content/
+mysql-data/
+
+# OS files
+.DS_Store

@@ -9,7 +9,7 @@ services:
       - "2368:2368"
     environment:
       NODE_ENV: production
-      url: https://maconphillips.com
+      url: https://www.maconphillips.com
       database__client: mysql
       database__connection__host: mysql
       database__connection__user: ghost

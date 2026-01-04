@@ -15,9 +15,13 @@ This site is deployed on the Murmuration PaaS (Coolify) at `sl8.tail7a94dc.ts.ne
 
 ### URLs
 
-- **Public**: https://maconphillips.com
-- **Admin**: https://maconphillips.com/ghost
-- **www redirect**: https://www.maconphillips.com → https://maconphillips.com
+- **Public**: https://www.maconphillips.com
+- **Admin**: https://www.maconphillips.com/ghost
+- **Redirect**: https://maconphillips.com → https://www.maconphillips.com
+
+### Email
+
+- **Catch-all**: *@maconphillips.com → macon.phillips+mp@gmail.com
 
 ## Local Development
 

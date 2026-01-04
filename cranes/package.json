@@ -1,0 +1,33 @@
+{
+  "name": "cranes",
+  "description": "Letters from Warren, Vermont",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Macon Phillips",
+    "email": "hello@maconphillips.com"
+  },
+  "config": {
+    "posts_per_page": 12,
+    "image_sizes": {
+      "s": { "width": 300 },
+      "m": { "width": 720 },
+      "l": { "width": 1200 }
+    },
+    "custom": {
+      "signature_name": {
+        "type": "text",
+        "default": "Macon Phillips",
+        "group": "site"
+      },
+      "signature_location": {
+        "type": "text",
+        "default": "WARREN, VERMONT",
+        "group": "site"
+      }
+    }
+  }
+}

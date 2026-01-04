@@ -1,0 +1,18 @@
+{{!< default}}
+
+<header class="tag-header">
+    <h1 class="tag-title">{{tag.name}}</h1>
+</header>
+
+<main class="stack">
+    {{#foreach posts}}
+        {{> card}}
+    {{/foreach}}
+</main>
+
+{{> pagination}}
+
+<footer class="page-footer">
+    <div class="rule"></div>
+    {{> mark}}
+</footer>

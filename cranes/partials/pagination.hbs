@@ -1,0 +1,12 @@
+{{#if pagination.pages}}
+{{#if pagination.total}}
+<nav class="pagination">
+    {{#if pagination.prev}}
+        <a href="{{pagination.prev}}" class="pagination-link pagination-prev">&larr; Newer</a>
+    {{/if}}
+    {{#if pagination.next}}
+        <a href="{{pagination.next}}" class="pagination-link pagination-next">Older &rarr;</a>
+    {{/if}}
+</nav>
+{{/if}}
+{{/if}}

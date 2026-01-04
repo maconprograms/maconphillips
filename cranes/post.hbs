@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{#post}}
+<article class="letter">
+    <header class="letter-header">
+        <time class="letter-date" datetime="{{date format="YYYY-MM-DD"}}">
+            {{date format="MMMM D, YYYY"}}
+        </time>
+        <h1 class="letter-title">{{title}}</h1>
+    </header>
+
+    <div class="letter-content">
+        {{content}}
+    </div>
+
+    <footer class="letter-footer">
+        <div class="rule"></div>
+        {{> mark}}
+
+        <nav class="letter-nav">
+            {{#prev_post}}
+                <a href="{{url}}" class="letter-nav-link letter-nav-prev">&larr; Previous</a>
+            {{/prev_post}}
+            {{#next_post}}
+                <a href="{{url}}" class="letter-nav-link letter-nav-next">Next &rarr;</a>
+            {{/next_post}}
+        </nav>
+    </footer>
+</article>
+{{/post}}
+
+{{> subscribe}}

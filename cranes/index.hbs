@@ -1,0 +1,16 @@
+{{!< default}}
+
+<main class="stack">
+    {{#foreach posts}}
+        {{> card}}
+    {{/foreach}}
+</main>
+
+{{> pagination}}
+
+<footer class="page-footer">
+    <div class="rule"></div>
+    {{> mark}}
+</footer>
+
+{{> subscribe}}

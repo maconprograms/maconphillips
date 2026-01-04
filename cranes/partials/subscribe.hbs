@@ -1,0 +1,21 @@
+{{#if @site.members_enabled}}
+<section class="subscribe">
+    <h3 class="subscribe-heading" id="subscribe-label">Get letters by email</h3>
+    <form class="subscribe-form" data-members-form="subscribe">
+        <label for="subscribe-email" class="sr-only">Email address</label>
+        <input
+            class="subscribe-input"
+            type="email"
+            id="subscribe-email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            aria-labelledby="subscribe-label"
+            data-members-email
+        >
+        <button class="subscribe-button" type="submit">Subscribe</button>
+    </form>
+    <p class="subscribe-message subscribe-success" data-members-success>Thanks! Check your inbox.</p>
+    <p class="subscribe-message subscribe-error" data-members-error></p>
+</section>
+{{/if}}

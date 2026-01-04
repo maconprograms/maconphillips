@@ -1,0 +1,18 @@
+{{!< default}}
+
+{{#post}}
+<article class="letter">
+    <header class="letter-header">
+        <h1 class="letter-title">{{title}}</h1>
+    </header>
+
+    <div class="letter-content">
+        {{content}}
+    </div>
+
+    <footer class="letter-footer">
+        <div class="rule"></div>
+        {{> mark}}
+    </footer>
+</article>
+{{/post}}

@@ -114,25 +114,20 @@ img {
 }
 
 .letterhead-name {
-    font-family: var(--font-smallcaps);
-    font-size: 0.85rem;
-    letter-spacing: 0.3em;
-    color: var(--color-debossed);
-    text-shadow:
-        -1px -1px 0 rgba(255, 255, 255, 0.9),
-        1px 1px 1px rgba(0, 0, 0, 0.08);
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
+    font-family: var(--font-signature);
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--color-ink);
+    text-transform: none;
+    margin-bottom: 0.15rem;
 }
 
 .letterhead-location {
     font-family: var(--font-smallcaps);
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.2em;
-    color: var(--color-debossed);
-    text-shadow:
-        -1px -1px 0 rgba(255, 255, 255, 0.9),
-        1px 1px 1px rgba(0, 0, 0, 0.08);
+    color: var(--color-muted);
     text-transform: uppercase;
 }
 

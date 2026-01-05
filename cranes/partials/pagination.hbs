@@ -1,5 +1,4 @@
-{{#if pagination.pages}}
-{{#if pagination.total}}
+{{#if pagination}}
 <nav class="pagination">
     {{#if pagination.prev}}
         <a href="{{pagination.prev}}" class="pagination-link pagination-prev">&larr; Newer</a>
@@ -8,5 +7,4 @@
         <a href="{{pagination.next}}" class="pagination-link pagination-next">Older &rarr;</a>
     {{/if}}
 </nav>
-{{/if}}
 {{/if}}

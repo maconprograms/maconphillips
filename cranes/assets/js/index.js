@@ -95,7 +95,16 @@
 
     // Listen for mouse movement (desktop only)
     if (window.matchMedia('(min-width: 601px)').matches) {
-        document.addEventListener('mousemove', handleMouseMove);
+        let ticking = false;
+        document.addEventListener('mousemove', function(e) {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    handleMouseMove(e);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
     }
 
     // -------------------------------------------------------------------------
@@ -159,5 +168,65 @@
             closeDrawer();
         }
     });
+
+    // -------------------------------------------------------------------------
+    // Reading Progress Bar
+    // -------------------------------------------------------------------------
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            progressBar.style.width = progress + '%';
+        }, { passive: true });
+    }
+
+    // -------------------------------------------------------------------------
+    // Mobile Chrome Fade on Scroll
+    // -------------------------------------------------------------------------
+    if (window.innerWidth <= 600) {
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector('.letterhead');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        window.addEventListener('scroll', function() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > 100) {
+                if (currentScrollY > lastScrollY) {
+                    if (header) header.classList.add('hidden');
+                    if (mobileNav) mobileNav.classList.add('hidden');
+                } else {
+                    if (header) header.classList.remove('hidden');
+                    if (mobileNav) mobileNav.classList.remove('hidden');
+                }
+            } else {
+                if (header) header.classList.remove('hidden');
+                if (mobileNav) mobileNav.classList.remove('hidden');
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+    }
+
+    // -------------------------------------------------------------------------
+    // Focus Beam Effect for Mobile
+    // -------------------------------------------------------------------------
+    if (window.innerWidth <= 600 && document.querySelector('.letter-content')) {
+        document.body.classList.add('focus-mode');
+        const paragraphs = document.querySelectorAll('.letter-content p, .letter-content li, .letter-content blockquote');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: [0.5],
+            rootMargin: '-30% 0px -30% 0px'
+        });
+        paragraphs.forEach(p => observer.observe(p));
+    }
 
 })();

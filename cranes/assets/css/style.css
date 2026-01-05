@@ -18,18 +18,33 @@
     --color-ink: #333333;
     --color-headline: #1a1a1a;
     --color-muted: #777777;
-    --color-faint: #999999;
+    --color-faint: #767676;
     --color-rule: #e8e3d9;
     --color-card-border: #ebe6dc;
     --color-accent: #8b5a2b;
+    --color-accent-dark: #6d4722;
     --color-debossed: #bbb5a8;
     --color-date: #666666;
-    --color-category: #aaaaaa;
+    --color-category: #767676;
     --color-nav: #555555;
 
     /* Spacing */
-    --content-width: 680px;
+    --content-width: 42.5rem;
     --page-padding: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-paper: #1a1a1a;
+        --color-desk: #111111;
+        --color-ink: #e8e3d9;
+        --color-headline: #fdfaf5;
+        --color-muted: #999999;
+        --color-date: #888888;
+        --color-faint: #666666;
+        --color-rule: #333333;
+        --color-card-border: #2a2a2a;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -67,6 +82,21 @@ a:hover {
 img {
     max-width: 100%;
     height: auto;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px 16px;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    z-index: 1000;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -506,7 +536,7 @@ h1, h2, h3 {
 }
 
 .subscribe-button:hover {
-    background: #6d4722;
+    background: var(--color-accent-dark);
 }
 
 .subscribe-message {
@@ -630,13 +660,6 @@ h1, h2, h3 {
 }
 
 /* --------------------------------------------------------------------------
-   Seal (Desktop Nav Toggle) - DEPRECATED, hidden
-   -------------------------------------------------------------------------- */
-.seal {
-    display: none;
-}
-
-/* --------------------------------------------------------------------------
    Corner Navigation
    -------------------------------------------------------------------------- */
 .corner-nav {
@@ -654,7 +677,7 @@ h1, h2, h3 {
     pointer-events: none;
 }
 
-.corner-nav.is-visible {
+.corner-nav.is-visible, .corner-nav:focus-within {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -734,6 +757,62 @@ h1, h2, h3 {
 @media (max-width: 600px) {
     .mobile-nav {
         display: flex;
+    }
+}
+
+/* Mobile Chrome Fade on Scroll */
+@media (max-width: 600px) {
+    .letterhead {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .letterhead.hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+    .mobile-nav {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .mobile-nav.hidden {
+        transform: translateY(100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+/* Focus Beam - Mobile Paragraph Highlighting */
+@media (max-width: 600px) {
+    .letter-content p,
+    .letter-content li,
+    .letter-content blockquote {
+        transition: opacity 0.3s ease;
+    }
+    .focus-mode .letter-content p,
+    .focus-mode .letter-content li,
+    .focus-mode .letter-content blockquote {
+        opacity: 0.4;
+    }
+    .focus-mode .letter-content p.in-view,
+    .focus-mode .letter-content li.in-view,
+    .focus-mode .letter-content blockquote.in-view {
+        opacity: 1;
+    }
+}
+
+/* Reading Progress Bar */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--color-accent);
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+}
+@media (min-width: 601px) {
+    .reading-progress {
+        display: none;
     }
 }
 
@@ -840,7 +919,6 @@ h1, h2, h3 {
 /* --------------------------------------------------------------------------
    Focus States (Accessibility)
    -------------------------------------------------------------------------- */
-.seal:focus-visible,
 .drawer-close:focus-visible,
 .drawer-link:focus-visible,
 .card-link:focus-visible,

@@ -5,7 +5,7 @@
 
     <div class="drawer-section">
         <h3 class="drawer-heading">Topics</h3>
-        {{#get "tags" limit="all"}}
+        {{#get "tags" limit="all" filter="visibility:public"}}
             <ul class="drawer-list">
                 {{#foreach tags}}
                     <li><a href="{{url}}" class="drawer-link">{{name}}</a></li>

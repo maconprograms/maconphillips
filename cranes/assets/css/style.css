@@ -22,6 +22,10 @@
     --color-rule: #e8e3d9;
     --color-card-border: #ebe6dc;
     --color-accent: #8b5a2b;
+    --color-debossed: #bbb5a8;
+    --color-date: #666666;
+    --color-category: #aaaaaa;
+    --color-nav: #555555;
 
     /* Spacing */
     --content-width: 680px;
@@ -93,6 +97,37 @@ img {
         padding: 1.5rem;
         padding-bottom: 5rem; /* Space for mobile nav */
     }
+}
+
+/* --------------------------------------------------------------------------
+   Letterhead (Debossed)
+   -------------------------------------------------------------------------- */
+.letterhead {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+}
+
+.letterhead-name {
+    font-family: var(--font-smallcaps);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--color-debossed);
+    text-shadow:
+        -1px -1px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 1px rgba(0, 0, 0, 0.08);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.letterhead-location {
+    font-family: var(--font-smallcaps);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--color-debossed);
+    text-shadow:
+        -1px -1px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 1px rgba(0, 0, 0, 0.08);
+    text-transform: uppercase;
 }
 
 /* --------------------------------------------------------------------------
@@ -213,28 +248,40 @@ h1, h2, h3 {
 
 .letter-date {
     display: block;
+    font-family: var(--font-body);
     font-style: italic;
-    font-size: 1rem;
-    color: var(--color-faint);
-    text-align: right;
-    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--color-date);
+    margin-bottom: 0.25rem;
 }
 
+.letter-category {
+    display: block;
+    font-family: var(--font-smallcaps);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--color-category);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.letter-category.is-hidden {
+    opacity: 0;
+}
+
+/* Hide title visually but keep for SEO/accessibility */
 .letter-title {
-    font-size: 2.25rem;
-    padding-right: 0;
-}
-
-@media (min-width: 600px) {
-    .letter-date {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
-    .letter-title {
-        padding-right: 8rem;
-    }
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .letter-content {
@@ -575,39 +622,71 @@ h1, h2, h3 {
 }
 
 /* --------------------------------------------------------------------------
-   Seal (Desktop Nav Toggle)
+   Seal (Desktop Nav Toggle) - DEPRECATED, hidden
    -------------------------------------------------------------------------- */
 .seal {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Corner Navigation
+   -------------------------------------------------------------------------- */
+.corner-nav {
     position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 48px;
-    height: 48px;
-    background: var(--color-accent);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 998;
+    bottom: 2rem;
+    right: 2rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, background 0.2s;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    pointer-events: none;
 }
 
-.seal:hover {
-    transform: scale(1.05);
-    background: #6d4722;
+.corner-nav.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
-.seal svg {
-    width: 24px;
-    height: 24px;
-    color: #fff;
+/* Radial glow behind the navigation */
+.corner-nav::before {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(
+        ellipse at bottom right,
+        rgba(253, 250, 245, 0.95) 0%,
+        rgba(253, 250, 245, 0) 70%
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+.corner-nav-link {
+    font-family: var(--font-smallcaps);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-nav);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+}
+
+.corner-nav-link:hover {
+    color: var(--color-headline);
+    text-decoration: none;
 }
 
 @media (max-width: 600px) {
-    .seal {
+    .corner-nav {
         display: none;
     }
 }

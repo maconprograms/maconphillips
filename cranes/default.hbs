@@ -17,15 +17,22 @@
 
     <div class="site-wrapper">
         <div class="page">
+            {{> letterhead}}
             {{{body}}}
         </div>
     </div>
 
-    {{> drawer}}
+    {{!-- Corner Navigation (appears on mouse movement) --}}
+    <nav class="corner-nav" aria-label="Categories">
+        {{#get "tags" limit="all" filter="visibility:public"}}
+            {{#foreach tags}}
+                <a href="{{url}}" class="corner-nav-link">{{name}}</a>
+            {{/foreach}}
+        {{/get}}
+    </nav>
 
-    <button class="seal" aria-label="Open navigation" aria-expanded="false" aria-controls="drawer">
-        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-    </button>
+    {{!-- Drawer (kept for mobile) --}}
+    {{> drawer}}
 
     <nav class="mobile-nav">
         <a href="/" class="mobile-nav-item{{#is "home"}} is-active{{/is}}">Home</a>

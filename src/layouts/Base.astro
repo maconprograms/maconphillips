@@ -1,47 +1,45 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Letters from Warren, Vermont" } = Astro.props;
+---
+
 <!DOCTYPE html>
-<html lang="{{@site.locale}}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{meta_title}}</title>
+    <title>{title}</title>
+    <meta name="description" content={description}>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;1,400&family=Cormorant+SC&family=Patua+One&family=Tangerine:wght@700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{asset 'css/style.css'}}">
-
-    {{ghost_head}}
 </head>
-<body class="{{body_class}}">
+<body>
     <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="reading-progress" id="reading-progress"></div>
 
     <div class="site-wrapper">
         <div class="page" id="main-content">
-            {{> letterhead}}
-            {{{body}}}
+            <a href="/" class="letterhead">
+                <div class="letterhead-name">Macon Phillips</div>
+                <div class="letterhead-location">Warren, Vermont</div>
+            </a>
+            <slot />
         </div>
     </div>
 
-    {{!-- Corner Navigation (appears on mouse movement) --}}
-    <nav class="corner-nav" aria-label="Categories">
-        {{#get "tags" limit="all" filter="visibility:public"}}
-            {{#foreach tags}}
-                <a href="{{url}}" class="corner-nav-link">{{name}}</a>
-            {{/foreach}}
-        {{/get}}
-    </nav>
-
-    {{!-- Drawer (kept for mobile) --}}
-    {{> drawer}}
-
     <nav class="mobile-nav">
-        <a href="/" class="mobile-nav-item{{#is "home"}} is-active{{/is}}">Home</a>
+        <a href="/" class="mobile-nav-item">Home</a>
         <button class="mobile-nav-item" aria-label="Topics" data-topics-toggle>Topics</button>
     </nav>
-
-    {{ghost_foot}}
-    <script src="{{asset 'js/index.js'}}"></script>
 </body>
 </html>
+
+<style is:global>
+@import '../styles/global.css';
+</style>

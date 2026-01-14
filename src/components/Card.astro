@@ -1,0 +1,40 @@
+---
+interface Props {
+  post: {
+    slug: string;
+    title: string;
+    published_at: string;
+    custom_excerpt?: string;
+    excerpt?: string;
+    primary_tag?: {
+      name: string;
+    };
+  };
+}
+
+const { post } = Astro.props;
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+};
+
+const excerpt = post.custom_excerpt || post.excerpt || '';
+---
+
+<article class="card">
+    <a href={`/${post.slug}/`} class="card-link">
+        <time class="card-date" datetime={post.published_at}>
+            {formatDate(post.published_at)}
+        </time>
+        <h2 class="card-title">{post.title}</h2>
+        {excerpt && <p class="card-excerpt">{excerpt}</p>}
+        {post.primary_tag && (
+            <span class="card-tag">{post.primary_tag.name}</span>
+        )}
+    </a>
+</article>

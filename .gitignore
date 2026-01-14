@@ -1,9 +1,5 @@
-# Environment files with secrets
+node_modules/
+dist/
 .env
+.astro/
 
-# Docker volumes (if mounted locally)
-content/
-mysql-data/
-
-# OS files
-.DS_Store

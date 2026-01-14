@@ -1,65 +1,43 @@
-# maconphillips.com
+# Astro Starter Kit: Minimal
 
-Personal website for Macon Phillips, powered by [Ghost CMS](https://ghost.org/).
-
-## Deployment
-
-This site is deployed on the Murmuration PaaS (Coolify) at `sl8.tail7a94dc.ts.net`.
-
-### Infrastructure
-
-- **Ghost 5.x** - Node.js CMS
-- **MySQL 8.0** - Database
-- **Cloudflare Tunnel** - SSL/routing via `tank` tunnel
-- **Coolify** - Container orchestration
-
-### URLs
-
-- **Public**: https://www.maconphillips.com
-- **Admin**: https://www.maconphillips.com/ghost
-- **Redirect**: https://maconphillips.com → https://www.maconphillips.com
-
-### Email
-
-- **Catch-all**: *@maconphillips.com → macon.phillips+mp@gmail.com
-
-## Local Development
-
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Generate passwords
-openssl rand -hex 32  # Use for MYSQL_ROOT_PASSWORD
-openssl rand -hex 32  # Use for MYSQL_PASSWORD
-
-# Edit .env with your values
-vim .env
-
-# Start containers
-docker compose up -d
-
-# View logs
-docker compose logs -f ghost
+```sh
+npm create astro@latest -- --template minimal
 ```
 
-## Email Setup (Mailgun)
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-1. Sign up at [mailgun.com](https://mailgun.com)
-2. Add sending domain `mg.maconphillips.com`
-3. Configure DNS records (SPF, DKIM)
-4. Get SMTP credentials and add to `.env`
+## 🚀 Project Structure
 
-## Backup
+Inside of your Astro project, you'll see the following folders and files:
 
-```bash
-# Backup Ghost content
-docker cp ghost-maconphillips:/var/lib/ghost/content ./backup-content
-
-# Backup MySQL
-docker exec ghost-mysql mysqldump -u root -p ghost > backup.sql
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-## Theme
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Currently using **Casper** (Ghost default theme). Custom themes can be uploaded via the Ghost admin panel.
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

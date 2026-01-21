@@ -13,6 +13,9 @@
     "build:maconphillips": "npm run build -w @maconphillips/site-maconphillips",
     "build:all": "npm run build:maconphillips"
   },
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
   "devDependencies": {
     "@tryghost/admin-api": "^1.14.4"
   }

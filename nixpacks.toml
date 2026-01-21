@@ -1,0 +1,14 @@
+# Nixpacks configuration for Coolify deployment
+# This builds the maconphillips.com Astro static site
+
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["npm run build:maconphillips"]
+
+[start]
+cmd = "npx serve packages/sites/maconphillips/dist -l 3000"

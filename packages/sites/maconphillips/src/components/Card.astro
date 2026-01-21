@@ -1,0 +1,79 @@
+---
+import Letterhead from './Letterhead.astro';
+
+interface Props {
+    post: {
+        slug: string;
+        title: string;
+        published_at: string;
+        custom_excerpt?: string;
+        excerpt?: string;
+    };
+}
+
+const { post } = Astro.props;
+const excerpt = post.custom_excerpt || post.excerpt || '';
+---
+
+<article class="letter card">
+    <a href={`/${post.slug}/`} class="card-link">
+        <div class="letter-content">
+            <header class="letter-header">
+                <Letterhead date={post.published_at} linked={false} />
+                <h2 class="letter-title">{post.title}</h2>
+            </header>
+            {excerpt && <p class="letter-excerpt">{excerpt}</p>}
+        </div>
+    </a>
+</article>
+
+<style>
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card:nth-child(odd) {
+    transform: rotate(-0.4deg);
+}
+
+.card:nth-child(even) {
+    transform: rotate(0.4deg);
+}
+
+.card:hover {
+    transform: translateY(-4px) rotate(0deg);
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.06),
+        0 8px 20px rgba(0,0,0,0.08),
+        0 20px 50px rgba(0,0,0,0.06);
+}
+
+.card-link {
+    display: block;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: none;
+}
+
+.letter-excerpt {
+    font-size: 1.2rem;
+    color: var(--color-ink);
+    line-height: 1.78;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .card,
+    .card:nth-child(odd),
+    .card:nth-child(even) {
+        transform: none;
+    }
+
+    .card:hover {
+        transform: none;
+    }
+}
+</style>

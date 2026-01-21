@@ -1,0 +1,150 @@
+/* ==========================================================================
+   MaconPhillips.com - Design Tokens & Base Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+    /* Typography */
+    --font-headline: 'EB Garamond', serif;
+    --font-body: 'Cormorant', serif;
+    --font-signature: 'Tangerine', cursive;
+    --font-smallcaps: 'Cormorant SC', serif;
+
+    /* Colors */
+    --color-paper: #fdfaf5;      /* Warm cream - Crane's stationery */
+    --color-desk: #c8c4bc;       /* Grey desk surface */
+    --color-ink: #333333;
+    --color-headline: #1a1a1a;
+    --color-muted: #777777;
+    --color-rule: #e0dbd1;
+    --color-card-border: #ebe6dc;
+    --color-accent: #8b5a2b;
+    --color-accent-dark: #6d4722;
+
+    /* Spacing */
+    --content-width: 42.5rem;
+    --page-padding: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    line-height: 1.78;
+    color: var(--color-ink);
+    background: var(--color-desk);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------------- */
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.page {
+    width: 100%;
+    max-width: var(--content-width);
+}
+
+@media (max-width: 600px) {
+    .site-wrapper {
+        padding: 1rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Stack Layout (Homepage)
+   -------------------------------------------------------------------------- */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Letter (shared between Card and Post detail)
+   -------------------------------------------------------------------------- */
+.letter {
+    background: var(--color-paper);
+    border: 1px solid var(--color-card-border);
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.04),
+        0 4px 12px rgba(0,0,0,0.06),
+        0 12px 40px rgba(0,0,0,0.04);
+}
+
+.letter-content {
+    padding: 2rem 2.5rem;
+}
+
+.letter-header {
+    margin-bottom: 1rem;
+}
+
+.letter-title {
+    font-family: var(--font-headline);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-headline);
+    line-height: 1.25;
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .letter-content {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .letter-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

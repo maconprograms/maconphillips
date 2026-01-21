@@ -1,6 +1,10 @@
 ---
 // Subscribe form - uses Ghost's member API
-const ghostUrl = import.meta.env.GHOST_URL;
+interface Props {
+  ghostUrl: string;
+}
+
+const { ghostUrl } = Astro.props;
 ---
 
 <section class="subscribe">

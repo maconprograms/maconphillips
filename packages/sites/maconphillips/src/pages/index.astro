@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import Subscribe from '../components/Subscribe.astro';
+import { createGhostClient } from '@maconphillips/ghost-client';
+
+const ghost = createGhostClient({
+    url: import.meta.env.GHOST_URL,
+    key: import.meta.env.GHOST_KEY
+});
+
+const posts = await ghost.getPosts({
+    tagFilter: 'tag:hash-personal,tag:hash-public'
+});
+---
+
+<Base title="Macon Phillips — Letters from Warren, Vermont">
+    <div class="stack">
+        {posts.map((post) => (
+            <Card post={post} />
+        ))}
+    </div>
+
+    <Subscribe ghostUrl={import.meta.env.GHOST_URL} />
+</Base>

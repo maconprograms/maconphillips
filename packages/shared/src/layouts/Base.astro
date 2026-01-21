@@ -2,9 +2,16 @@
 interface Props {
   title: string;
   description?: string;
+  siteName?: string;
+  siteLocation?: string;
 }
 
-const { title, description = "Letters from Warren, Vermont" } = Astro.props;
+const {
+  title,
+  description = "Letters from Warren, Vermont",
+  siteName = "Macon Phillips",
+  siteLocation = "Warren, Vermont"
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -26,8 +33,8 @@ const { title, description = "Letters from Warren, Vermont" } = Astro.props;
     <div class="site-wrapper">
         <div class="page" id="main-content">
             <a href="/" class="letterhead">
-                <div class="letterhead-name">Macon Phillips</div>
-                <div class="letterhead-location">Warren, Vermont</div>
+                <div class="letterhead-name">{siteName}</div>
+                <div class="letterhead-location">{siteLocation}</div>
             </a>
             <slot />
         </div>
@@ -41,5 +48,5 @@ const { title, description = "Letters from Warren, Vermont" } = Astro.props;
 </html>
 
 <style is:global>
-@import '../styles/global.css';
+@import '@maconphillips/shared/styles/global.css';
 </style>

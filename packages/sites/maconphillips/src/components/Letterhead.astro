@@ -1,0 +1,81 @@
+---
+interface Props {
+    date: string;
+    location?: string;
+    linked?: boolean;
+}
+
+const { date, location = "Warren, Vermont", linked = true } = Astro.props;
+
+const formatDate = (dateString: string) => {
+    const d = new Date(dateString);
+    return d.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+};
+---
+
+<div class="letter-header-row">
+    <time class="dateline" datetime={date}>
+        {formatDate(date)}
+    </time>
+    {linked ? (
+        <a href="/" class="letterhead">
+            <span class="letterhead-name">Macon Phillips</span>
+            <span class="letterhead-location">{location}</span>
+        </a>
+    ) : (
+        <div class="letterhead">
+            <span class="letterhead-name">Macon Phillips</span>
+            <span class="letterhead-location">{location}</span>
+        </div>
+    )}
+</div>
+
+<style>
+.letter-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* All letterhead elements share identical typography */
+.dateline,
+.letterhead-name,
+.letterhead-location {
+    font-family: var(--font-smallcaps);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--color-muted);
+    text-transform: uppercase;
+}
+
+.letterhead {
+    text-align: right;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+a.letterhead:hover {
+    text-decoration: none;
+}
+
+a.letterhead:hover .letterhead-name,
+a.letterhead:hover .letterhead-location {
+    color: var(--color-accent);
+}
+
+.letterhead-name {
+    display: block;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.letterhead-location {
+    display: block;
+    margin-top: 0.25rem;
+    transition: color 0.2s;
+}
+</style>

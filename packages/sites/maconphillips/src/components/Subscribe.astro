@@ -1,0 +1,89 @@
+---
+interface Props {
+    ghostUrl: string;
+}
+
+const { ghostUrl } = Astro.props;
+---
+
+<section class="subscribe">
+    <h3 class="subscribe-heading" id="subscribe-label">Get letters by email</h3>
+    <form class="subscribe-form" action={`${ghostUrl}/members/api/send-magic-link/`} method="POST">
+        <input type="hidden" name="emailType" value="subscribe">
+        <label for="subscribe-email" class="sr-only">Email address</label>
+        <input
+            class="subscribe-input"
+            type="email"
+            id="subscribe-email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            aria-labelledby="subscribe-label"
+        >
+        <button class="subscribe-button" type="submit">Subscribe</button>
+    </form>
+</section>
+
+<style>
+.subscribe {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-paper);
+    border: 1px dashed var(--color-rule);
+    text-align: center;
+}
+
+.subscribe-heading {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.subscribe-input {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-card-border);
+    background: #fff;
+}
+
+.subscribe-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.subscribe-button {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.subscribe-button:hover {
+    background: var(--color-accent-dark);
+}
+
+.subscribe-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+    .subscribe-form {
+        flex-direction: column;
+    }
+}
+</style>

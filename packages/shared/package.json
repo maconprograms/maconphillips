@@ -1,0 +1,10 @@
+{
+  "name": "@maconphillips/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./components/*": "./src/components/*",
+    "./layouts/*": "./src/layouts/*",
+    "./styles/*": "./src/styles/*"
+  }
+}

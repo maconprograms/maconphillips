@@ -1,15 +1,19 @@
 {
-  "name": "maconphillips-web",
+  "name": "maconphillips-monorepo",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/ghost-client",
+    "packages/shared",
+    "packages/sites/*"
+  ],
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev:maconphillips": "npm run dev -w @maconphillips/site-maconphillips",
+    "build:maconphillips": "npm run build -w @maconphillips/site-maconphillips",
+    "build:all": "npm run build:maconphillips"
   },
-  "dependencies": {
-    "@tryghost/content-api": "^1.12.3",
-    "astro": "^5.16.9"
+  "devDependencies": {
+    "@tryghost/admin-api": "^1.14.4"
   }
 }

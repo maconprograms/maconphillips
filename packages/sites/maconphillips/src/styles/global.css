@@ -7,19 +7,19 @@
    -------------------------------------------------------------------------- */
 :root {
     /* Typography */
-    --font-headline: 'EB Garamond', serif;
-    --font-body: 'Cormorant', serif;
-    --font-signature: 'Tangerine', cursive;
-    --font-smallcaps: 'Cormorant SC', serif;
+    --font-headline: Georgia, 'Times New Roman', serif;
+    --font-body: Georgia, 'Times New Roman', serif;
+    --font-signature: 'Caveat', cursive;
+    --font-meta: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 
     /* Colors */
-    --color-paper: #fdfaf5;      /* Warm cream - Crane's stationery */
-    --color-desk: #c8c4bc;       /* Grey desk surface */
+    --color-paper: #ffffff;
+    --color-desk: #f8f8f8;
     --color-ink: #333333;
     --color-headline: #1a1a1a;
-    --color-muted: #777777;
-    --color-rule: #e0dbd1;
-    --color-card-border: #ebe6dc;
+    --color-muted: #6b6b6b;
+    --color-rule: #e5e5e5;
+    --color-card-border: #e5e5e5;
     --color-accent: #8b5a2b;
     --color-accent-dark: #6d4722;
 
@@ -45,8 +45,8 @@ html {
 
 body {
     font-family: var(--font-body);
-    font-size: 1.25rem;
-    line-height: 1.78;
+    font-size: 1.15rem;
+    line-height: 1.7;
     color: var(--color-ink);
     background: var(--color-desk);
 }
@@ -101,10 +101,7 @@ img {
 .letter {
     background: var(--color-paper);
     border: 1px solid var(--color-card-border);
-    box-shadow:
-        0 1px 3px rgba(0,0,0,0.04),
-        0 4px 12px rgba(0,0,0,0.06),
-        0 12px 40px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .letter-content {
@@ -117,8 +114,8 @@ img {
 
 .letter-title {
     font-family: var(--font-headline);
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--color-headline);
     line-height: 1.25;
     margin-top: 1rem;

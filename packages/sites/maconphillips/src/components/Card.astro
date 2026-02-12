@@ -33,20 +33,9 @@ const excerpt = post.custom_excerpt || post.excerpt || '';
     cursor: pointer;
 }
 
-.card:nth-child(odd) {
-    transform: rotate(-0.4deg);
-}
-
-.card:nth-child(even) {
-    transform: rotate(0.4deg);
-}
-
 .card:hover {
-    transform: translateY(-4px) rotate(0deg);
-    box-shadow:
-        0 2px 6px rgba(0,0,0,0.06),
-        0 8px 20px rgba(0,0,0,0.08),
-        0 20px 50px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .card-link {
@@ -66,12 +55,6 @@ const excerpt = post.custom_excerpt || post.excerpt || '';
 }
 
 @media (max-width: 600px) {
-    .card,
-    .card:nth-child(odd),
-    .card:nth-child(even) {
-        transform: none;
-    }
-
     .card:hover {
         transform: none;
     }
